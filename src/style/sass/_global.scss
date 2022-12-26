@@ -1,0 +1,11 @@
+$tan: rgb(137 111 91 / 86%);
+$chestnut: #964B32ff;
+$caput-mortuum: #4E2C23ff;
+$raw-sienna: rgba(208, 184, 155, 0.362);;
+$middle-grey: #918478ff;
+$font: #ffffff;
+$delete: #bd1717;
+$eye: #cfcc00;
+@mixin font {
+  font-family: 'Poppins', sans-serif !important;
+}

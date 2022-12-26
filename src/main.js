@@ -3,7 +3,7 @@
 let form = document.querySelector('.main-form');
 let spaceBook = document.querySelector('.book-list');
 let rangeValue = document.querySelector('[name="note"] + span')
-let iconEyes = document.querySelector('.eye-icon')
+
 
 //? 2.: Segundo declaramos una función que nos permita filtrar el contenido de los input
 
@@ -20,7 +20,7 @@ let getValueAndCheckEmpty = (input) =>{
     return value
   }
 }
-// //? 3.: Terciero, Creamos la función con la que trabajaremos, esta función recogerá los datos enviados desde el filtro. Y su trabajo será añadir dicha ifnroamción en nuestra lista de libros.
+// //? 3.: Tercero, Creamos la función con la que trabajaremos, esta función recogerá los datos enviados desde el filtro. Y su trabajo será añadir dicha ifnroamción en nuestra lista de libros.
 
 let onFormSubmit = (event) =>{
 
@@ -35,10 +35,14 @@ let onFormSubmit = (event) =>{
   let theme = form.theme.value
   let note = form.note.value
   let checkbox = form.isRidden.checked
+ 
+   //* Generamos un segundo filtro para que en caso de que el primer filtro nos delvuelva un valor vacío, salgamos de la función 
 
   if(title === 'está vacío' || author === 'está vacío'){
     return
   }
+  
+    //* Ahora toca crear la parte del HTML donde irán los libros añadidos.
 
   let newBook = document.createElement('article');
   let eyeIcon = checkbox === true ? 'bi-eye' : 'bi-eye-slash';
@@ -59,6 +63,7 @@ let onFormSubmit = (event) =>{
   spaceBook.append(newBook)
 }
 
+  //? 4.: Una vez creado el elemento libro, tendremos que definirle al icono de la papelera la propiedad para auto elinarse a si mismo.
 spaceBook.onclick = (event) =>{
   if(event.target.classList.contains('delete-icon')){
     const youSure = confirm('¿Estás Seguro?')
@@ -68,6 +73,8 @@ spaceBook.onclick = (event) =>{
 
 
 form.addEventListener('submit', () => onFormSubmit(event) )
+
+  //? Extras: Para que el usuario pueda ver la nota que elije antes de enviarla al registro
 
 form.note.addEventListener('input', () => {
   rangeValue.innerHTML = form.note.value
